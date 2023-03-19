@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="\static\churn.css" /> 
+    <style>  
+      .container   {
+        display: flex;
+         justify-content: center;
+          align-items: center;
+            
+                  }
+  
+                  #btn{  
+                    font-size: 25px; 
+                  }  
+      </style>  
+</head>
+
+<body>
+
+
+    <!-- Navbar Starts -->
+    <section id="nav-bar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand font-weight-bold" href="#" style="color: rgb(243, 243, 235);">E-commerce Churn prediction</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                     <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                     </li>
+                     
+                     <li class="nav-item">
+                        <a class="nav-link" href="#">Predictions</a>
+                     </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                     </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <!-- Navbar Ends -->
+    
+    
+         <h1>Enter the information</h1>
+    <form action="{{ url_for('predict')}}" method="post">
+        
+    
+<div class="contentform">
+        	
+          <div class="leftcontact">  
+
+                  <div class="form-group">
+                    <p>Tenure <span>*</span></p>  
+                     <span class="icon-case"></span>
+                     <input type="text"  name="Tenure" placeholder="Tenure" Id="Tenure" required="required">
+                     <div class="validation"></div>
+                  </div>
+
+                  <div class="form-group">
+                     <p>CityTier (1, 2, 3) <span>*</span></p>
+                      <span class="icon-case"></span>
+                      <input   type="text" name='CityTier' placeholder='CityTier' Id='CityTier' required="required">
+                      <div class="validation"></div>
+                  </div> 
+
+                  <div class="form-group">
+                    <p>Preferred Login Device <span>*</span></p>
+                    <span class="icon-case"></span>
+                              <select name="PreferredLoginDevice"  Id="PreferredLoginDevice"  required="required">
+                              <option value="Phone">Phone</option>
+                              <option value="Computer">Computer</option>
+                              </select>
+                          <div class="validation"></div>
+                  </div>
+
+                <div class="form-group">
+                  <p>Warehouse To Home  distance<span>*</span></p>
+                    <span class="icon-case"></span>
+                    <input type="text"  name="WarehouseToHome" placeholder="WarehouseToHome" Id="WarehouseToHome" required="required">
+                    <div class="validation"></div>
+                </div>
+                 
+                <div class="form-group">
+                  <p>Preferred Payment Mode <span>*</span></p>
+                  <span class="icon-case"></span>
+                            <select name="PreferredPaymentMode"   Id="PreferredPaymentMode" required="required">
+                            <option value="COD">COD</option>
+                            <option value="Debit Card">Debit Card</option>
+                            <option value="UPI">UPI</option>
+                            <option value="CC">CC</option>
+                            <option value="E wallet">E wallet</option>
+                            </select>
+                        <div class="validation"></div>
+                </div>
+
+                
+
+                <div class="form-group">
+                  <p>Gender of Customer:<span>*</span></p>	
+                  <span class="icon-case"></span>
+                            <select name="Gender"  Id="Gender"  required="required">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                            <div class="validation"></div>
+                </div>
+
+                  <div class="form-group">
+                    <p>Hour Spend On App<span>*</span></p>
+                      <span class="icon-case"></span>
+                      <input type="text"  name="HourSpendOnApp" placeholder="HourSpendOnApp" Id="HourSpendOnApp" required="required">
+                      <div class="validation"></div>
+                  </div>
+
+                <div class="form-group">
+                  <p>Number Of Device Registered <span>*</span></p>
+                    <span class="icon-case"></span>
+                    <input  type="text"  name="NumberOfDeviceRegistered" placeholder="NumberOfDeviceRegistered" Id="NumberOfDeviceRegistered" required="required">
+                    <div class="validation"></div>
+                </div>
+
+			
+
+                 <div class="form-group">
+                    <p>Prefered Order Categoty <span>*</span></p>
+                     <span class="icon-case"></span>
+                     <select name="PreferedOrderCat"  Id="PreferedOrderCat" required="required">
+                     <option value='Fashion'>Fashion</option>
+                     <option value="Mobile">Mobile</option>
+                     <option value='Laptop'>Laptop & Accessory</option>
+                     <option value="Grocery">Grocery</option>
+                     <option value='Others'>Others</option>
+                     </select>
+                     <div class="validation"></div>
+                 </div>
+                
+              </div>
+                
+      
+
+<div class="rightcontact">	
+
+          
+   <div class="form-group">
+    <p>Satisfaction Score (1 to 5) <span>*</span></p>
+      <span class="icon-case"></span>
+      <input type="text"   name="SatisfactionScore" placeholder="SatisfactionScore" Id="SatisfactionScore"  required="required">
+      <div class="validation"></div>
+   </div>	
+
+   <div class="form-group">
+    <p>Marital Status <span>*</span></p>
+    <span class="icon-case"></span>
+              <select name="MaritalStatus"  Id="MaritalStatus"  required="required">
+              <option value="Married">Married</option>
+              <option value="Single">Single</option>
+              <option value="Divorced">Divorced</option>
+          </select>
+          <div class="validation"></div>
+   </div>
+  
+
+ 
+           <div class="form-group">
+             <p>Number Of Address <span>*</span></p>
+              <span class="icon-case"></span>
+               <input type="text"   name="NumberOfAddress"  placeholder="NumberOfAddress" Id="NumberOfAddress" required="required">
+               <div class="validation"></div>
+           </div>	
+ 
+
+
+			<div class="form-group">
+			<p>Complain (NO=0 & YES =1)<span>*</span></p>
+			   <span class="icon-case"></span>
+				 <input name="Complain" type="text" placeholder="Complain" Id="Complain" required="required">
+         <div class="validation"></div>
+			</div>	
+
+			<div class="form-group">
+			<p>Order Amount Hike From lastYear  <span>*</span></p>	
+			  <span class="icon-case"></span>
+				<input name="OrderAmountHikeFromlastYear" type="text" placeholder="OrderAmountHikeFromlastYear" Id="OrderAmountHikeFromlastYear"required="required">
+        <div class="validation"></div>
+			</div>
+
+      <div class="form-group">
+        <p>Coupon Used <span>*</span></p>	
+        <span class="icon-case"></span>
+          <input name="CouponUsed"  type="text" placeholder="CouponUsed"  Id="CouponUsed"  required="required">
+            <div class="validation"></div>
+      </div>
+      
+        <div class="form-group">
+          <p>Order Count  <span>*</span></p>	
+          <span class="icon-case"></span>
+            <input name="OrderCount"  type="text" placeholder="OrderCount" Id="OrderCount" required="required">
+               <div class="validation"></div>
+        </div>
+        <div class="form-group">
+            <p>Day Since Last Order <span>*</span></p>	
+            <span class="icon-case"></span>
+              <input name="DaySinceLastOrder" type="text" placeholder="DaySinceLastOrder" Id="DaySinceLastOrder" required="required">
+               <div class="validation"></div>
+        </div>
+
+			
+            <div class="form-group">
+              <p>Cashback Amount  <span>*</span></p>
+                  <span class="icon-case"></span>
+                  <input name="CashbackAmount" type="text"  placeholder="CashbackAmount" Id="CashbackAmount" required="required">
+                  <div class="validation"></div>
+            </div>
+		 
+			
+</div>
+</div>
+<div class="container">   
+  <button type="submit" value="Submit" id="btn" class="btn btn-lg btn-info mb-5 ml-auto mr-auto d-block" style="box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75); background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);">Predict</button>
+
+</div>
+</form>	
+    
+   
+   
+
+
+        
+
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>
+  
+  

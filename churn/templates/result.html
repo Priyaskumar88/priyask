@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {margin:0;background-repeat: no-repeat !important;
+    background-image:url("paper.gif") !important;
+    background-size: 100% 100%!important;}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #afceb8;
+}
+.header {
+       background-color: #1b73e6;
+       
+       text-align: center;
+     }
+.alert {
+     
+     text-align: center;
+     background-color: #2817c2;
+   }
+   
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="/">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+
+<div style="padding:20px;margin-top:30px;background-color:powderblue;height:1500px;">
+  <h1 class="header">Predition result</h1>
+  <br><br><br><br> 
+ <h1 style='font-size: 50px; color: white' class="alert alert-primary text-center"  role="alert">{{ prediction_text }}</h1>
+  
+</div>
+
+</body>
+</html>
+
+
